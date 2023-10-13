@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Django application that provides a simple way to lock down a website to a specific IP address. It is intended to be used as a security measure for websites that are not intended to be accessed by the general public. Work in progress. The project is currently in the early stages of development. IP Lock will sercure databases and provide IP authentication for the user.
+This project is a Django application that provides a simple way to lock down a website/DB to a specific IP address. It is intended to be used as a security measure for websites that are not intended to be accessed by the general public. Work in progress. The project is currently in the early stages of development. IP Lock will sercure databases and provide IP authentication for the user.
 
 ## Table of Contents
 

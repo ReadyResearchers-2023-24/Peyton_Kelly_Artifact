@@ -1,5 +1,5 @@
 import ipaddress
-"""
+
 def check(ip):
     # Use the ip_address function from the ipaddress module to check if the input is a valid IP address
     try:
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     ip = "366.1.2.2"
     check(ip)
 
-"""
+
 import socket
 hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)

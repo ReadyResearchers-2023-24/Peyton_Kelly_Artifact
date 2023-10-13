@@ -2,6 +2,7 @@ from django.shortcuts import HttpResponse
 from .models import UserIp, UserIpLocation
 from django.shortcuts import render
 from ip2geotools.databases.noncommercial import DbIpCity
+
 # Create Viewe
 
 def ipaddress(request):
@@ -16,6 +17,14 @@ def ipaddress(request):
     # get the user ip address
     return HttpResponse("Welcome User!<br>You are visiting from: {}".format(ip))
 # Create your views here.
+# 
+from ip2geotools.databases.noncommercial import DbIpCity
+
+"""FIle to compare actual vs data"""
+from requests import get
+def public_ip():
+    ip = get('https://api.ipify.org').content.decode('utf8')
+    return HttpResponse('My public IP address is: {}'.format(ip))
 
 
 # use the ip2location database to get the location of the user

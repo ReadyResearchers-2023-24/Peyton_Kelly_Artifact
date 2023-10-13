@@ -20,5 +20,14 @@ class UserIpLocation(models.Model):
     longitude = models.CharField(max_length=200)
 
 
+class Data(models.Model):
+    ip_address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    region = models.CharField(max_length=200)
+    country = models.CharField(max_length=200)
+    latitude = models.CharField(max_length=200)
+    longitude = models.CharField(max_length=200)
+    
+
     def __str__(self):  
         return self.ip_address

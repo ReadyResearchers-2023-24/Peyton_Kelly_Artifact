@@ -55,9 +55,6 @@ While developing this project, we conducted a review of existing solutions in th
 Our project aims to build upon these existing works by [explain how your project is different or extends existing solutions]. By doing so, we hope to [mention the specific advantages or improvements your project brings to the table].
 
 ## Installation
+Clone the repo and be in the directory UserIpProject
+It can be run locally with the 'python manage.py runserver' 
 
-Provide step-by-step instructions on how to install your project locally. Include any dependencies and specific configurations needed.
-
-```bash
-# Example installation command
-pip install your-project-name

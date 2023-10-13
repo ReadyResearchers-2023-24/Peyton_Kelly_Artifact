@@ -31,6 +31,10 @@ List and briefly describe the key features of your project. This can include:
 - **[Additional Feature 1]**
 - **[Additional Feature 2]**
 
+## DATA 
+IP2Location™ LITE IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE Database 
+https://lite.ip2location.com/ip2location-lite
+
 
 ## Related Work
 

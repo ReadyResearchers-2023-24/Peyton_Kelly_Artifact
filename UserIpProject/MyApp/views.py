@@ -49,5 +49,7 @@ def location(ip,request):
    # save the user ip location
     user_ip_location = UserIpLocation(ip_address=ip, city=city, region=region, country=country, latitude=latitude, longitude=longitude)
     
+    UserIpLocation.save(user_ip_location)
 
+    
 # Create a view to show the location of the user

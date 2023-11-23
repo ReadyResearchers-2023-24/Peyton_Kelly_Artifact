@@ -1,55 +1,39 @@
 from django.shortcuts import HttpResponse
+from django.shortcuts import render, redirect
 from .models import UserIp, UserIpLocation
-from django.shortcuts import render
-from ip2geotools.databases.noncommercial import DbIpCity
+from django.contrib.auth.models import User, auth
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+# Create Register view 
+def index(request):
+    return render(request, 'index.html')
 
-# Create Viewe
+def login(request):
+    return render(request, 'login.html')
 
-def ipaddress(request):
-    user_ip = request.META.get('HTTP_X_FORWARDED_FOR')
-    if user_ip is not None:
-        ip = user_ip.split(',')[0]
+def register(request):
+    if request.method == 'POST':
+        username = request.POST('username')
+        email = request.POST('email')
+        password = request.POST('password')
+        password2 = request.POST('password2')
+        if password == password2:
+            if User.object.filter(email=email).exists():
+                messages.info(request, 'Email already in use.')
+                return redirect('register')
+            elif User.object.filter(username=username).exists():
+                messages.info(request, 'Username already in use.')
+                return redirect('register')
+            else:
+                user = User.object.create_user(username=username, email=email, password=password)
+                user.save();
+                return redirect('login')
+            
+        else:
+            messages.info(request, 'Passwords do not match.')
+            return redirect('register')
+        
     else:
-        ip = request.META.get('REMOTE_ADDR')
-    
-    #send IP to the models.py file
-    user_ip = UserIp(ip_address=ip)
-    # get the user ip address
-    return HttpResponse("Welcome User!<br>You are visiting from: {}".format(ip))
-# Create your views here.
-# 
-from ip2geotools.databases.noncommercial import DbIpCity
-
-"""FIle to compare actual vs data"""
-from requests import get
-def public_ip():
-    ip = get('https://api.ipify.org').content.decode('utf8')
-    return HttpResponse('My public IP address is: {}'.format(ip))
+        return render(request, 'register.html')
 
 
-# use the ip2location database to get the location of the user
-
-# Update view to show the location of the user
-def location(ip,request):
-    ip = request.META.get('HTTP_X_FORWARDED_FOR')
-    if ip is not None:
-        ip = ip.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    res = DbIpCity.get(ip, api_key="free")
-    city = res.city
-    region = res.region
-    country = res.country
-    latitude = res.latitude
-    longitude = res.longitude
-    # save the user ip address
-    user_ip = UserIp(ip_address=ip)
-    #save the user ip location
-    UserIp.save(user_ip)
-   # save the user ip location
-    user_ip_location = UserIpLocation(ip_address=ip, city=city, region=region, country=country, latitude=latitude, longitude=longitude)
-    
-    UserIpLocation.save(user_ip_location)
-
-    
-# Create a view to show the location of the user

@@ -55,7 +55,7 @@ ROOT_URLCONF = 'UserIpProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['UserIpProject/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'UserIpProject.wsgi.application'
 
-
+APPEND_SLASH=False
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 

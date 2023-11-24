@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
-
-from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
+
+
 # Create Register view 
 def index(request):
     return render(request, 'index.html')
@@ -23,7 +24,7 @@ def register(request):
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, email=email, password=password)
-                user.save();
+                user.save()
                 messages.success(request, 'Registration successful!')
                 return redirect('login')
         else:

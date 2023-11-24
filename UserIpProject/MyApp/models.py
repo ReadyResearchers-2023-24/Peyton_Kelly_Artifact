@@ -4,11 +4,15 @@ from django.db import models
 #TAKE NOTE: This is where you create your database tables
 
 #STORE THE USER IP ADDRESS
-class UserIp(models.Model): 
-    ip_address = models.CharField(max_length=200)
+class UserIp: 
+    ip_address = None
+    def __init__(self, ip_address):
+        self.ip_address = ip_address
 
     def __str__(self):
-        return self.ip_address
+        return self.ip_address 
+
+ 
     
 # WHERE CAN I DO SOMETHING WITH THE IP ADDRESS
 class UserIpLocation(models.Model):

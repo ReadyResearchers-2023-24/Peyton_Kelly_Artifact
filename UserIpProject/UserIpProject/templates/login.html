@@ -11,7 +11,7 @@
 {% endfor %}
 
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="login">
     {% csrf_token %}
     <p> Username: </p>
     <input type="text" name="username" placeholder="Username" required/>

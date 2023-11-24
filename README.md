@@ -1,4 +1,4 @@
-# IP LOCK 
+# IP LOCK
 
 ## Overview
 
@@ -10,10 +10,9 @@ This project is a Django application that provides a simple way to lock down a w
 - [Motivation](#motivation)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Technical Details](#technical-details)
-- [Contributing](#contributing)
-- [License](#license)
+- [Related Work](#related-work)
+- [DATA](#data)
+- [Installation](#installation)
 
 ## Introduction
 
@@ -26,25 +25,23 @@ This project was important for me to start because of the gap I saw in the indus
 ## Features
 
 List and briefly describe the key features of your project. This can include:
+
 - **IP Authentication:** How users' IP addresses are used for authentication.
 - **Database Protection:** Measures taken to secure databases.
 - **[Additional Feature 1]**
 - **[Additional Feature 2]**
 
-## DATA 
-IP2Location™ LITE IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE Database 
-https://lite.ip2location.com/ip2location-lite
+## DATA
 
+IP2Location™ LITE IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE Database
+<https://lite.ip2location.com/ip2location-lite>
 
 ## Related Work
 
-While developing this project, we reviewed existing solutions in the realm of IP authentication and database protection. 
-
-
+While developing this project, we reviewed existing solutions in the realm of IP authentication and database protection.
 
 ## Installation
+
 Clone the repo and be in the directory UserIpProject
-It can be run locally with the 'python manage.py runserver' 
-This will allow the site to be reached. Along with my site comes some of the code to run the geolocation service on the IP address. There are some files worth running in Python to see what will be a part of my project. 
-
-
+It can be run locally with the 'python manage.py runserver'
+This will allow the site to be reached. Along with my site comes some of the code to run the geolocation service on the IP address. There are some files worth running in Python to see what will be a part of my project.

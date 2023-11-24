@@ -1,15 +1,27 @@
-<h1>Login</h1>
-<form method="POST" action="login">
+<h1>Login to IP lock</h1>
+<style>
+     h5{
+        font-size: 20px;
+        color: red;
+        }
+</style>
+{% for message in messages%}
+<h5>{{ message }}</h5>
+    
+{% endfor %}
+
+
+<form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <p> Username: </p>
-    <input type="text" name="username" placeholder="Username" required>
+    <input type="text" name="username" placeholder="Username" required/>
     <p> Password: </p>
-    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="password" placeholder="Password" required/>
     <br>
-    <input type="submit" value="Login">
+    <input type="submit" />
     <br>
     <br>
-    {{ user_ip }}
+   
 
-    <p>Don't have an account? <a href="register">Register</a></p>
+    <p>Don't have an account? <a href="http://127.0.0.1:8000/register">Register</a></p>
 </form>

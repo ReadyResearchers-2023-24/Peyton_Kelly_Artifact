@@ -9,19 +9,19 @@
 
 {% for message in messages%}
 <h5>{{ message }}</h5>
-<br>    
+    
 {% endfor %}
 
-<form method="post" action="{% url 'register' %}">
+<form method="post" action="register">
     {% csrf_token %}
     <p> Username: </p>
-    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="username" placeholder="Username"/>
     <p> Email: </p>
-    <input type="email" name="email" placeholder="Email" >
+    <input type="email" name="email" placeholder="Email" />
     <p> Password: </p>
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password"/>
     <p> Confirm Password: </p>
-    <input type="password" name="confirm_password" placeholder="Confirm Password">
+    <input type="password" name="confirm_password" placeholder="Confirm Password"/>
     <br>
-    <input type="submit" value= 'register'>
+    <input type="submit">
 </form>

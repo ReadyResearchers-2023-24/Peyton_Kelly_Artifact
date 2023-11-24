@@ -20,8 +20,11 @@ from MyApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('MyApp.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('register/', views.register, name='register'),
-    path('login/', include('MyApp.urls')),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+
+    
+    
     
 ]

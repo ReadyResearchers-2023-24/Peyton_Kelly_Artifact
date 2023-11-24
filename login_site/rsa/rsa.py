@@ -21,7 +21,7 @@ def generatePublicKey(totient):
 
 
 def generatePrivateKey(public_key, totient):
-	g, _, private_key = Extended_euclid(int(totient), int(public_key))
+	g,_, private_key = Extended_euclid(int(totient), int(public_key))
 	if private_key > totient:
 		private_key = private_key % totient
 	elif private_key < 0:

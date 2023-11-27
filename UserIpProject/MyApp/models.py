@@ -35,3 +35,12 @@ class Data(models.Model):
 
     def __str__(self):  
         return self.ip_address
+    
+class User(models.Model):
+    username = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    password = models.CharField(max_length=200)
+    
+    def __str__(self):  
+        return self.username
+    

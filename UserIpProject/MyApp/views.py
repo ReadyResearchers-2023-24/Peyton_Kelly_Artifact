@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
+from ip2geotools.databases.noncommercial import DbIpCity
 
 
 # Create Register view 
@@ -59,5 +60,18 @@ def IP_hidden (request):
         # If the IP address is from a user
         ip = request.META.get('REMOTE_ADDR')
     print(ip)
-    return render(request, 'IP_hidden.html', {'ip': ip})
+
+    
+    res = DbIpCity.get(ip, api_key="free")
+    ip = res.ip_address
+    city = res.city
+    region = res.region
+    country = res.country
+    latitude = res.latitude
+    longitude = res.longitude
+    print(f"IP Address: {res.ip_address}")
+    print(f"Location: {res.city}, {res.region}, {res.country}")
+    print(f"Coordinates: (Lat: {res.latitude}, Lng: {res.longitude})")
+
+    return render(request, 'IP_hidden.html', {'ip': ip,'city':city, 'region':region, 'country':country, 'latitude':latitude, 'longitude':longitude})
 

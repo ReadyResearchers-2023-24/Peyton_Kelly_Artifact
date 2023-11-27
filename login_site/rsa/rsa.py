@@ -90,7 +90,7 @@ def decrypt(ct_list, ct, private_key, n):
 
 
 
-bits = int(input("Enter bits: "))
+bits = 128
 n, totient, private_key, public_key = runRSA(bits)
 message = input("Enter message: ")
 ct_list, ct = encrypt(message, public_key, n)

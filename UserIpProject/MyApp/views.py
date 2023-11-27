@@ -47,3 +47,17 @@ def login(request):
             return redirect('login')
     else:
         return render(request, 'login.html')
+    
+
+def IP_hidden (request):
+    # Get the IP address of the user
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        # If the IP address is from a proxy
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        # If the IP address is from a user
+        ip = request.META.get('REMOTE_ADDR')
+    print(ip)
+    return render(request, 'IP_hidden.html', {'ip': ip})
+

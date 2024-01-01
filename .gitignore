@@ -1,2 +1,5 @@
 
 data/IP2LOCATION-LITE-DB11.IPV6.CSV
+
+# git ignore virt env
+virt/

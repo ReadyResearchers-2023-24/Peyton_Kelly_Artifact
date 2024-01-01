@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h2>Individual Record</h2>
+<div class="card">
+    <div class="card-header"><strong>
+        {{customer_record.first_name}} {{customer_record.last_name}}
+        </strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">EMAIL: {{customer_record.email}} <br>
+        PHONE: {{customer_record.phone}} <br> 
+        ADDRESS: {{customer_record.address}} <br>
+        CITY: {{customer_record.city}} <br>
+        STATE: {{customer_record.state}} <br>
+        ZIPCODE: {{customer_record.zipcode}} <br>
+        COUNTRY: {{customer_record.country}}<br>
+        CREATED AT: {{customer_record.date_added}}<br>
+      
+     </h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="{% url 'home' %}" class="btn btn-primary">Go home</a>
+      <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">DELETE</a>
+      <a href="{% url 'edit_record' customer_record.id %}" class="btn btn-secondary">Edit Record</a>
+    </div>
+  </div>
+
+
+
+{% endblock %}

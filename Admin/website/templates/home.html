@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1>WELCOME: {{user.username}}</h1>
+<br>
+<h2>Records</h2>
+<div>
+<table class="table table-striped table-hover table-bordered table-end">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">CITY</th>
+      <th scope="col">STATE</th>
+      <th scope="col">ZIPCODE</th>
+      <th scope="col">COUNTRY</th>
+      <th scope="col">created_at</th>
+      
+    
+    </tr>
+  </thead>
+  <tbody>
+    
+</div>
+{% if records %}
+{% for record in records %}
+
+<tr>
+<td><a href="{% url 'record' record.id %}">{{record.id}} </a></td>
+<td>{{record.first_name}} 
+{{record.last_name}} </td>
+<td>{{record.email}} </td>
+<td>{{record.phone}} </td>
+<td>{{record.address}} </td>
+<td>{{record.city}} </td>
+<td>{{record.state}} </td>
+<td>{{record.zipcode}} </td>
+<td>{{record.country}} </td>
+<td>{{record.date_added}} </td>
+</tr>
+{% endfor %}
+{% endif %}
+<h2>Records</h2>
+<div>
+<table class="table table-striped table-hover table-bordered table-end">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">CITY</th>
+      <th scope="col">STATE</th>
+      <th scope="col">ZIPCODE</th>
+      <th scope="col">COUNTRY</th>
+      <th scope="col">created_at</th>
+      
+    
+    </tr>
+  </thead>
+  <tbody>
+    
+</div>
+{% if companies %}
+{% for companies in companiess %}
+
+<tr>
+<td><a href="{% url 'B_record' companies.id %}">{{companies.id}} </a></td>
+<td>{{companies.name}} </td>
+<td>{{companies.email}} </td>
+<td>{{companies.phone}} </td>
+<td>{{companies.address}} </td>
+<td>{{companies.city}} </td>
+<td>{{companies.state}} </td>
+<td>{{companies.zipcode}} </td>
+<td>{{companies.country}} </td>
+<td>{{companies.date_added}} </td>
+</tr>
+{% endfor %}
+{% endif %}
+
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+<h1>LOGIN: </h1>
+<form method="post" action = "{% url 'home' %}">
+{% csrf_token %}
+<br>
+
+    <div class="mb-3">
+    
+      <input type="text" class="form-control" name="username" placeholder="username" required>
+     
+    </div>
+    <div class="mb-3">
+
+      <input type="password" class="form-control" name="password" placeholder="password" required >
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-secondary">Login</button>
+
+
+
+</form>
+
+</div>
+{% endif %}
+{% endblock %}

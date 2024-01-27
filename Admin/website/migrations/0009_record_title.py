@@ -7,13 +7,13 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('website', '0008_alter_record_file'),
+        ("website", "0008_alter_record_file"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='record',
-            name='title',
+            model_name="record",
+            name="title",
             field=models.CharField(default=django.utils.timezone.now, max_length=50),
             preserve_default=False,
         ),

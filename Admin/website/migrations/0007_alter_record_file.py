@@ -7,14 +7,16 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('website', '0006_delete_companies_record_file'),
+        ("website", "0006_delete_companies_record_file"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='record',
-            name='file',
-            field=models.FileField(default=django.utils.timezone.now, upload_to='files/', verbose_name=''),
+            model_name="record",
+            name="file",
+            field=models.FileField(
+                default=django.utils.timezone.now, upload_to="files/", verbose_name=""
+            ),
             preserve_default=False,
         ),
     ]

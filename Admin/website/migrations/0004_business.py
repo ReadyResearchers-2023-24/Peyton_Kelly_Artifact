@@ -6,25 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('website', '0003_remove_record_ip_address'),
+        ("website", "0003_remove_record_ip_address"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Business',
+            name="Business",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Name', models.CharField(max_length=200)),
-                ('address', models.CharField(max_length=200)),
-                ('city', models.CharField(max_length=200)),
-                ('zipcode', models.CharField(max_length=200)),
-                ('state', models.CharField(max_length=200)),
-                ('country', models.CharField(max_length=200)),
-                ('date_added', models.DateTimeField(auto_now_add=True)),
-                ('Product', models.CharField(max_length=200)),
-                ('Price', models.CharField(max_length=200)),
-                ('Quantity', models.CharField(max_length=200)),
-                ('Total', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("Name", models.CharField(max_length=200)),
+                ("address", models.CharField(max_length=200)),
+                ("city", models.CharField(max_length=200)),
+                ("zipcode", models.CharField(max_length=200)),
+                ("state", models.CharField(max_length=200)),
+                ("country", models.CharField(max_length=200)),
+                ("date_added", models.DateTimeField(auto_now_add=True)),
+                ("Product", models.CharField(max_length=200)),
+                ("Price", models.CharField(max_length=200)),
+                ("Quantity", models.CharField(max_length=200)),
+                ("Total", models.CharField(max_length=200)),
             ],
         ),
     ]

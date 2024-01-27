@@ -12,7 +12,8 @@ path("record/<int:pk>", views.customer_record, name="record"),
 path("delete_record/<int:pk>", views.delete_record, name="delete_record"),
 path("add_record/", views.add_record, name="add_record"),
 path("edit_record/<int:pk>", views.edit_record, name="edit_record"),
-path("business_record/", views.B_record, name="B_record"),
+#path("business_record/", views.B_record, name="B_record"),
+path("upload/", views.upload, name="upload"),
 
 
 ]

@@ -1,7 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Record, Companies
+from .models import Record 
+from django import forms
+
+
+
 
 class SignUpForm(UserCreationForm):
    
@@ -33,7 +37,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
-        #Get IP address of user
+        
 
         
         
@@ -48,8 +52,9 @@ class AddRecordForm(forms.ModelForm):
     state = forms.CharField(max_length=200,required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'State'}))
     zipcode = forms.CharField(max_length=200,required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Zipcode'}))
     country = forms.CharField(max_length=200,required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Country'}))
+    title = forms.CharField(max_length=50)
+    file = forms.FileField( label='', widget=forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Upload File'}))
     class Meta:
         model = Record
         exclude = ['user',]
-
 

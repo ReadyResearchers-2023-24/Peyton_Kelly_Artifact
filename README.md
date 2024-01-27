@@ -1,8 +1,8 @@
-# IP LOCK
+# Secure Lock 
 
 ## Overview
 
-> This project is a Django application that provides a simple way to lock down a website/DB to a specific IP address. It is intended to be used as a security measure for websites that are not intended to be accessed by the general public. Work in progress. The project is currently in the early stages of development. IP Lock will secure databases and provide IP authentication for the user.
+> This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses.  
 
 ## Table of Contents
 
@@ -26,10 +26,10 @@
 
 List and briefly describe the key features of your project. This can include:
 
-+ **IP Authentication:** How users' IP addresses are used for authentication.
++ **IP Honeypot tracker:** How users' IP addresses are used for authentication.
 + **Database Protection:** Measures taken to secure databases.
 + **RSA Encryption logic**
-+ **[Additional Feature 2]**
++ **Uploading files to database**
 
 ## DATA
 
@@ -42,4 +42,6 @@ While developing this project, we reviewed existing solutions in the realm of IP
 
 ## Installation
 
-Clone the repo and be in the directory UserIpProject. It can be run locally with the 'python manage.py runserver'. This will allow the site to be reached. Along with my site comes some of the code to run the geolocation service on the IP address. There are some files worth running in Python to see what will be a part of my project.
+MySQL and MYSQL workbench are used in this project. Once those are downloaded properly. Find the local instance and connect to the server. From there create a new database called 'incominguser' with the password that is set in the Settings.py file of the project repository. Once the database is created, open the terminal, Cd to the projects directory. Outside of the virt folder run 'source virt/Scripts/activate'
+Once in the repository, be in the Admin folder which has manage.py in the directory. Run 'python manage.py makemigrations' then 'python manage.py migrate' this should create the local instances of the schemas used, if no errors run 'python manage.py runserver'. This will start the local server for the site to be displayed. 
+

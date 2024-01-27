@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record 
 from ipware import get_client_ip
-
+import os
 # Create your views here.
 
 
@@ -84,6 +84,12 @@ def delete_record(request, pk):
     if request.user.is_authenticated:
         customer_record = Record.objects.get(id=pk)
         customer_record.delete()
+        # remove the file path 
+        for filename in os.listdir('media/'):
+            if filename == customer_record.file:
+                os.remove('media/uploads'+filename)
+
+
         messages.success(request, "Record deleted successfully!")
         return redirect("home")
     else:

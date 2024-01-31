@@ -45,6 +45,7 @@ def home(request):
     )
     saveNow.save()
     
+    
 
     records = Record.objects.all()
     
@@ -194,6 +195,7 @@ def upload(request):
         return redirect("home")
 
 def traffic_monitor(request):
+    # is authenticated as a user
     if request.user.is_authenticated:
     # Getting loadover15 minutes
         dataSaved = Monitor.objects.all().order_by('-datetime')

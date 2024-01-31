@@ -23,6 +23,7 @@ from django.contrib.auth.models import User
 from django_otp.admin import OTPAdminSite
 from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_otp.plugins.otp_totp.admin import TOTPDeviceAdmin
+from website.models import Record , Monitor
 
 class OTPAdmin(OTPAdminSite):
    pass
@@ -31,11 +32,14 @@ admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
+admin_site.register(Record)
+admin_site.register(Monitor)
+
 
 
 urlpatterns = [
-    path("secret/", admin.site.urls),
+    path("secret/", admin_site.urls),
     path("", include("website.urls")),
     path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
-    
+    path("secret2/", admin.site.urls),
 ]

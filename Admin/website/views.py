@@ -5,11 +5,18 @@ from .forms import SignUpForm, AddRecordForm
 from .models import Record
 
 import os
+import time
+import psutil
+import requests
+from datetime import datetime
+from .models import Monitor
+from urllib.parse import urlparse
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
-# Imaginary function to handle an uploaded file.
+
 
 
 def home(request):
@@ -46,11 +53,15 @@ def logout_user(request):
 
 def register_user(request):
     if request.method == "POST":
-
+        
+        
         form = SignUpForm(request.POST)
         if form.is_valid():
+            
             form.save()
             # store IP address of user
+            
+            # create a new record object
 
             # authenticate user / login user
             username = form.cleaned_data.get("username")
@@ -126,12 +137,15 @@ def edit_record(request, pk):
             request.POST, request.FILES or None, instance=current_record
         )
         if request.method == "POST":
+            form = AddRecordForm(
+            request.POST, request.FILES or None, instance=current_record
+        )
             if form.is_valid():
-
+                
                 form.save()
                 messages.success(request, "Record updated successfully!")
                 return redirect("home")
-        return render(request, "edit_record.html", {"form": form})
+        return render(request, "edit_record.html", {"form": form},)
     else:
         messages.success(request, "Please login to view this page.")
         return redirect("home")
@@ -152,3 +166,58 @@ def upload(request):
     else:
         messages.success(request, "Please login to view this page.")
         return redirect("home")
+
+def traffic_monitor(request):
+    dataSaved = Monitor.objects.all().order_by('-datetime')
+    # Getting loadover15 minutes 
+    load1, load5, load15 = psutil.getloadavg()
+    cpu_usage = int((load15/os.cpu_count()) * 100)
+    ram_usage = int(psutil.virtual_memory()[2])
+    p = Paginator(dataSaved, 100)
+    #shows number of items in page
+    totalSiteVisits = (p.count)
+    #find unique page viewers & Duration
+    pageNum = request.GET.get('page', 1)
+    page1 = p.page(pageNum)
+    #unique page viewers
+    a = Monitor.objects.order_by().values('ip').distinct()
+    pp = Paginator(a, 10)
+    #shows number of items in page
+    unique = (pp.count)
+    #update time
+    now = datetime.now()
+    data = {
+        "now":now,
+        "unique":unique,
+        "totalSiteVisits":totalSiteVisits,
+        "cpu_usage": cpu_usage,
+        "ram_usage": ram_usage,
+        "dataSaved": page1,
+    }
+    return render(request, 'monitor.html', data)
+#home page
+def on_home(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    response = requests.get('http://api.ipstack.com/'+ip+'?access_key=GETYOURACCESSKEY') #change from HTTP to HTTPS on the IPSTACK API if you have a premium account
+    rawData = response.json()
+    print(rawData) # print this out to look at the response
+    continent = rawData['continent_name']
+    country = rawData['country_name']
+    capital = rawData['city']
+    city = rawData['location']['capital']
+    now = datetime.now()
+    datetimenow = now.strftime("%Y-%m-%d %H:%M:%S")
+    saveNow = Monitor(
+        continent=continent,
+        country=country,
+        capital=capital,
+        city=city,
+        datetime=datetimenow,
+        ip=ip
+    )
+    saveNow.save()
+    return render(request, 'home.html')

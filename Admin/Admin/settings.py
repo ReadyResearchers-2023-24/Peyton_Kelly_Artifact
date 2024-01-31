@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
-
+LOGIN_REDIRECT_URL = "home"
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "website",
     "admin_honeypot",
+    "django_otp",
+    "django_otp.plugins.otp_totp", 
+    
+
+
 ]
 
 MIDDLEWARE = [
@@ -48,6 +53,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+
+    "django_otp.middleware.OTPMiddleware",
+
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]

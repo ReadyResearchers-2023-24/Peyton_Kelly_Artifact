@@ -17,7 +17,11 @@
         ZIPCODE: {{customer_record.zipcode}} <br>
         COUNTRY: {{customer_record.country}}<br>
         CREATED AT: {{customer_record.date_added}}<br>
-      
+        TITLE: {{customer_record.title}}<br>
+        
+        {% if customer_record.file %}
+        FILE: <a href="{{ customer_record.file.url }}" download>{{ customer_record.file.name }}</a><br>
+    {% endif %}
      </h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       <a href="{% url 'home' %}" class="btn btn-primary">Go home</a>

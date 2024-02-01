@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from django_otp.admin import OTPAdminSite
 from django_otp.plugins.otp_totp.models import TOTPDevice
@@ -30,6 +30,11 @@ class OTPAdmin(OTPAdminSite):
 
 admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
+admin_site.register(Group)
+#honeypot admin
+admin_honeypot_site = admin.AdminSite(name="admin_honeypot")
+admin_site.register 
+
 admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 admin_site.register(Record)
@@ -41,5 +46,6 @@ urlpatterns = [
     path("secret/", admin_site.urls),
     path("", include("website.urls")),
     path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
-    path("secret2/", admin.site.urls),
+    #path("secret2/", admin.site.urls), #this is the default admin site that comes with django
+    # currently usising admin_site instead of admin.site for 2fa 
 ]

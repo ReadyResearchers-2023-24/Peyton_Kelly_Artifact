@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout 
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
-
 import os
 import time
 import psutil
@@ -16,17 +15,25 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 
+'''
+    
+    bad_ip = Monitor.objects.filter(ip=ip).count()
+    if bad_ip > 5:
+        messages.success(request, "You have been blocked from this site.")
+        return redirect("home")
 
+'''
 
 
 def home(request):
+    access_key = 'e3c1906f3a0ac622a3d0e8f578318a07'
     # get the IP address of the user
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-    response = requests.get('http://api.ipstack.com/'+ip+'?access_key=7ff9f8d117530b7a7a4ffaee163f1d55') #change from HTTP to HTTPS on the IPSTACK API if you have a premium account
+    response = requests.get('http://api.ipstack.com/'+ip+'?access_key='+access_key) #change from HTTP to HTTPS on the IPSTACK API if you have a premium account
     rawData = response.json()
     print(rawData) # print this out to look at the response
     continent = rawData['continent_name']
@@ -44,7 +51,36 @@ def home(request):
         ip=ip
     )
     saveNow.save()
+    ## check if the user has been blocked
+
+        # messages.success(request, "You have been blocked from this site.")
+        #return redirect("home")
     
+    # if IP is outside of the US, block it
+    #if country != "United States":
+    #    messages.success(request, "You have been blocked from this site.")
+    #    return redirect("blocked")
+   
+    # if IP is from a "bad" continent, block it admin can change the continent
+    if continent == "Africa":
+        messages.success(request, "You have been blocked from this site.")
+        return redirect("blocked")
+    
+    # if IP is from a "bad" city, block it admin can change the city
+    if city == "Lagos":
+        messages.success(request, "You have been blocked from this site.")
+        return redirect("blocked")
+    
+    # if IP is from a "bad" capital, block it admin can change the capital
+    if capital == "Abuja":
+        messages.success(request, "You have been blocked from this site.")
+        # throw a 404 error
+        return redirect("blocked")
+    
+    # if IP is from a "bad" country, block it admin can change the country
+    if country == "Russia":
+        messages.success(request, "You have been blocked from this site.")
+        return redirect("blocked")
     
 
     records = Record.objects.all()
@@ -86,9 +122,7 @@ def register_user(request):
         if form.is_valid():
             
             form.save()
-            # store IP address of user
-            
-            # create a new record object
+        
 
             # authenticate user / login user
             username = form.cleaned_data.get("username")
@@ -124,8 +158,8 @@ def delete_record(request, pk):
         # remove the file path
         for filename in os.listdir("media/"):
             if filename == customer_record.file:
-                os.remove("media/uploads" + filename)
-
+                #os.remove("media/uploads" + filename)
+                os.remove("media/" + filename)
         messages.success(request, "Record deleted successfully!")
         return redirect("home")
     else:
@@ -211,7 +245,7 @@ def traffic_monitor(request):
         page1 = p.page(pageNum)
         #unique page viewers
         a = Monitor.objects.order_by().values('ip').distinct()
-        pp = Paginator(a, 10)
+        pp = Paginator(a, 50)
         #shows number of items in page
         unique = (pp.count)
         #update time

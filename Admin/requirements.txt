@@ -1,0 +1,18 @@
+asgiref==3.7.2
+certifi==2024.2.2
+charset-normalizer==3.3.2
+Django==4.2.5
+django-admin-honeypot @ git+https://github.com/dmpayton/django-admin-honeypot.git@a840496d183df89965eeb33c9a5dd9ea3919dfff
+django-ipware==6.0.3
+django-otp==1.3.0
+idna==3.6
+mysql-connector-python==8.3.0
+mysqlclient==2.1.1
+pillow==10.2.0
+psutil==5.9.8
+python-ipware==2.0.1
+requests==2.31.0
+sqlparse==0.4.4
+typing-extensions==4.9.0
+urllib3==2.2.0
+gunicorn==21.2.0

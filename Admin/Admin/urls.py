@@ -46,6 +46,6 @@ urlpatterns = [
     path("secret/", admin_site.urls),
     path("", include("website.urls")),
     path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
-    #path("secret2/", admin.site.urls), #this is the default admin site that comes with django
+    path("secret2/", admin.site.urls), #this is the default admin site that comes with django
     # currently usising admin_site instead of admin.site for 2fa 
 ]

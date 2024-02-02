@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-#4dr_4xe2sx3(x61xt4s61ztn$m#3q^&-+s3pe-0^%-v+ma-xa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1",'0.0.0.0' ]
+ALLOWED_HOSTS = ["127.0.0.1",'0.0.0.0','*' ]
 
 LOGIN_REDIRECT_URL = "home"
 # Application definition
@@ -83,7 +83,7 @@ WSGI_APPLICATION = "Admin.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+'''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -94,7 +94,13 @@ DATABASES = {
         "PORT": "3306",
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",  # Update the path if needed
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -131,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type

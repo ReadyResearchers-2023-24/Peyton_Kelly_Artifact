@@ -95,7 +95,7 @@ nest-asyncio==1.5.6
 
 nh3==0.2.14
 num2words==0.5.10
-numpy==1.21.2
+numpy==1.22.0
 outcome==1.2.0
 packaging==23.0
 pandas==2.0.1

@@ -31,7 +31,7 @@ decorator==5.1.1
 defusedxml==0.7.1
 dicttoxml==1.7.16
 dill==0.3.7
-django==4.2.5
+Django==4.2.5
 django-admin-honeypot @ git+https://github.com/dmpayton/django-admin-honeypot.git@a840496d183df89965eeb33c9a5dd9ea3919dfff
 django-crispy-forms==2.0
 django-ipware==6.0.3

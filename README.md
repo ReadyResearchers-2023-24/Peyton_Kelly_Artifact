@@ -2,7 +2,7 @@
 
 ## Overview
 
-> This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses.  
+> This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses. 
 
 ## Table of Contents
 
@@ -28,8 +28,10 @@ List and briefly describe the key features of your project. This can include:
 
 + **IP Honeypot tracker:** How users' IP addresses are used for authentication.
 + **Database Protection:** Measures taken to secure databases.
-+ **RSA Encryption logic**
-+ **Uploading files to database**
++ **IP Authentication:** Filtered IP specific access to the site.
++ **Uploading files to database** For usage of the site.
++ **Admin Dashboard:** For the admin to manage the site and users.
++ **Web Traffic Monitoring:**  To track suspicious login attempts and database views.
 
 ## DATA
 
@@ -42,6 +44,92 @@ While developing this project, we reviewed existing solutions in the realm of IP
 
 ## Installation
 
-MySQL and MYSQL workbench are used in this project. Once those are downloaded properly. Find the local instance and connect to the server. From there create a new database called 'incominguser' with the password that is set in the Settings.py file of the project repository. Once the database is created, open the terminal, Cd to the projects directory. Outside of the virt folder run 'source virt/Scripts/activate'
-Once in the repository, be in the Admin folder which has manage.py in the directory. Run 'python manage.py makemigrations' then 'python manage.py migrate' this should create the local instances of the schemas used, if no errors run 'python manage.py runserver'. This will start the local server for the site to be displayed. 
+To install the project, follow these steps:
+
+1. Clone the repository to your local machine:
+
+```bash
+git clone ...
+```
+
+2. Once in the Peyton_Kelly_Artifact, start the virtual environment:
+
+```bash
+source venv/bin/activate
+```
+
+3. Install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Change Directory to Admin, Create a superuser:
+
+```bash
+cd Admin
+python manage.py createsuperuser
+```
+
+5. Check for migrations:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+
+5. Run the project locally:
+
+```bash
+python manage.py runserver
+```
+
+6. Open your web browser and navigate to the following URL:
+
+```bash
+http://127.0.0.1:8000/
+```
+
+USING DOCKER:
+
+1. Clone the repository to your local machine:
+
+```bash
+git clone ...
+```
+
+2. Once in the Peyton_Kelly_Artifact, start the virtual environment:
+
+```bash
+source venv/bin/activate
+```
+
+3. Where the Dockerfile is located, build the docker image:
+
+```bash
+docker-compose build
+```
+
+4. Run the docker image:
+
+```bash
+docker-compose up
+```
+
+5. Open your web browser and navigate to the following URL:
+
+```bash
+http://0.0.0.0:8000
+or localhost:8000
+```
+
+## Conclusion
+
+
+
+
+
+
+
 

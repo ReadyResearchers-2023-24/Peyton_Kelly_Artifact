@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 Admin.wsgi:application
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "Admin.wsgi:application", "--preload"]
     volumes:
       - .:/app
     ports:
@@ -13,8 +13,6 @@ services:
       - DJANGO_SECRET_KEY=django-insecure-#4dr_4xe2sx3(x61xt4s61ztn$m#3q^&-+s3pe-0^%-v+ma-xa
       - DJANGO_DB_ENGINE=django.db.backends.sqlite3
       - DJANGO_DB_NAME=/app/db.sqlite3  # Update the path if needed
-
-      
 
 volumes:
   mysql_data:  # If you previously had a volume for MySQL data, you can remove this line

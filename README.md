@@ -2,7 +2,7 @@
 
 ## Overview
 
-> This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses. 
+> This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses.
 
 ## Table of Contents
 

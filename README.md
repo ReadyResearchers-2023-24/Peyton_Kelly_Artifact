@@ -16,7 +16,7 @@
 
 ## Introduction
 
-> This project is a Django application that provides a simple way to lock down a website to a specific IP address. It is intended to be used as a security measure for websites that are not intended to be accessed by the general public. Work in progress. The project is currently in the early stages of development. IP Lock will secure databases and provide IP authentication for the user.
+> This project is a Django application that provides a simple way to lock down a website to a specific IP address. It is intended to be used as a security measure for websites that are not intended to be accessed by the general public. Work in progress. The project is currently in the early stages of development. This project will secure databases and provide IP authentication for the user.
 
 ## Motivation
 
@@ -37,6 +37,9 @@ List and briefly describe the key features of your project. This can include:
 
 IP2Location™ LITE IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE Database
 <https://lite.ip2location.com/ip2location-lite>
+
+## API 
+IPSTACK
 
 ## Related Work
 

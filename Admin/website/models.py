@@ -5,6 +5,16 @@ from datetime import datetime
 #import random
 # Create your models here.
 
+
+class CPU_load(models.Model):
+    cpu_usage = models.FloatField()
+    ram_usage = models.FloatField()
+    totalSiteVisits = models.IntegerField()
+    now = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.now)
+
+
 class Monitor(models.Model):
     continent = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)

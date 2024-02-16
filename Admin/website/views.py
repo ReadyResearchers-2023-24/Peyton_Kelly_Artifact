@@ -8,7 +8,7 @@ import time
 import psutil
 import requests
 from datetime import datetime
-from .models import Monitor
+from .models import Monitor , CPU_load
 from urllib.parse import urlparse
 from django.core.paginator import Paginator
 
@@ -258,9 +258,31 @@ def traffic_monitor(request):
             "ram_usage": ram_usage,
             "dataSaved": page1,
         }
+        #save_cpu()
+
+        
         return render(request, 'monitor.html', data)
     else:
         messages.success(request, "Please login to view this page.")
         return redirect("home")
 
+'''
+def save_cpu():
+    load1, load5, load15 = psutil.getloadavg()
+    cpu_usage = int((load15/os.cpu_count()) * 100)
+    ram_usage = int(psutil.virtual_memory()[2])
+    now = datetime.now()
+    saveNow = CPU_load(
+        cpu_usage=cpu_usage,
+        ram_usage=ram_usage,
+        now=now
+    )
+    
+
+    # every 15 minutes save 
+    
+    saveNow.save()
+    time.sleep(900)
+    
+'''
 

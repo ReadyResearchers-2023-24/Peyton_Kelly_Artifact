@@ -1,5 +1,7 @@
 
 
+/venv
+/venv/
 
 # git ignore virt env
 

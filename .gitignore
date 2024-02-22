@@ -1,6 +1,6 @@
+.DS_Store
 
-
-
+Admin/__pycache__/
 # git ignore virt env
 
 # ignore media files

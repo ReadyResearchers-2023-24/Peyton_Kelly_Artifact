@@ -108,7 +108,7 @@ git clone ...
 source venv/bin/activate
 ```
 
-3. Where the Dockerfile is located, build the docker image:
+3. Where the Dockerfile is located, build the docker image. Tip - Make sure docker desktop is running first. :
 
 ```bash
 docker-compose build

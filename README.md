@@ -1,5 +1,5 @@
 # Secure Lock 
-<https://securelocked.vercel.app>
+<https://securelocked.vercel.app> - Production Site with Vercel and Railway 
 ## Overview
 
 > This project is a Django application that provides a simple way to control who is accessing your database information. With tools that track suspiscous login attempts a administrator would be able to secure the site and files to protect against losses.
@@ -29,7 +29,6 @@ List and briefly describe the key features of your project. This can include:
 + **IP Honeypot tracker:** How users' IP addresses are used for authentication.
 + **Database Protection:** Measures taken to secure databases.
 + **IP Authentication:** Filtered IP specific access to the site.
-+ **Uploading files to database** For usage of the site.
 + **Admin Dashboard:** For the admin to manage the site and users.
 + **Web Traffic Monitoring:**  To track suspicious login attempts and database views.
 

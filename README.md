@@ -11,7 +11,7 @@
 + [Features](#features)
 + [Installation](#installation)
 + [Related Work](#related-work)
-+ [DATA](#data)
++ [API](#API)
 + [Installation](#installation)
 
 ## Introduction
@@ -33,17 +33,12 @@ List and briefly describe the key features of your project. This can include:
 + **Admin Dashboard:** For the admin to manage the site and users.
 + **Web Traffic Monitoring:**  To track suspicious login attempts and database views.
 
-## DATA
-
-IP2Location™ LITE IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE Database
-<https://lite.ip2location.com/ip2location-lite>
-
 ## API 
-IPSTACK
+IPSTACK <https://ipstack.com>
 
 ## Related Work
 
-While developing this project, we reviewed existing solutions in the realm of IP authentication and database protection.
+While developing this project, we reviewed existing solutions in the realm of IP authentication and database protection. Leveraging the Django web framework used in other cases like Image stenography there are ways to protect data that would help others. The work protects transferred data from being available to others. Similar to my project the site will be unavailable as a whole unless you meet the specifications with certain IP requirements. 
 
 ## Installation
 
